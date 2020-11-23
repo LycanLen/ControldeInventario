@@ -13,6 +13,8 @@ import java.sql.SQLException;
  * @author ERNESTO
  */
 public class conectar {
+    //Es necesario cambiar el user y password segun tu configuracion
+    //de mySQL
     private static Connection con;
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
