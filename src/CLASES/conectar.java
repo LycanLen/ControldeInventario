@@ -30,7 +30,7 @@ public class conectar {
                 System.out.println("Conexion Establecida");
             }
         } catch (ClassNotFoundException | SQLException e){
-            System.out.println("error al conectar" + e);
+            System.out.println("error al conectar " + e);
         }
      }
     public Connection getConnection() {

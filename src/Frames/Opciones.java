@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+// Color [210,2,38]
+// Content Area Filled
 package Frames;
 
 import CLASES.conectar;
@@ -57,7 +59,9 @@ public class Opciones extends javax.swing.JFrame {
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 modelo.addRow(datos);
+                System.out.println(modelo.getRowCount());
             }
+            System.out.println("");
             tbproductos.setModel(modelo);
         } catch (SQLException ex) {
             Logger.getLogger(Opciones.class.getName()).log(Level.SEVERE, null, ex);
@@ -137,16 +141,23 @@ public class Opciones extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo");
 
+        txt_codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codigoActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("INVENTARIO");
 
-        jButton1.setBackground(new java.awt.Color(210, 2, 38));
+        jButton1.setBackground(new java.awt.Color(254, 28, 66));
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Filtrar Busqueda");
-        jButton1.setToolTipText("");
+        jButton1.setForeground(new java.awt.Color(254, 28, 66));
+        jButton1.setText("Filtrar Seleccion");
+        jButton1.setToolTipText("DESACTIVADO");
         jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -156,7 +167,7 @@ public class Opciones extends javax.swing.JFrame {
         btnAgregar.setBackground(new java.awt.Color(210, 2, 38));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("AGREGAR AL INVENTARIO");
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Captura.JPG"))); // NOI18N
         btnAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +179,7 @@ public class Opciones extends javax.swing.JFrame {
         btnEliminar.setBackground(new java.awt.Color(210, 2, 38));
         btnEliminar.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("ELIMINAR SELECCION");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/2.JPG"))); // NOI18N
         btnEliminar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,9 +220,9 @@ public class Opciones extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(70, 70, 70)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnAgregar)
+                                .addGap(51, 51, 51)
+                                .addComponent(btnEliminar)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -246,15 +257,17 @@ public class Opciones extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(28, 28, 28))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())))
         );
+
+        jButton1.getAccessibleContext().setAccessibleDescription("Deshabilitado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -275,7 +288,19 @@ public class Opciones extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
+        String cod;
+        int cant;
+        cod = this.txt_codigo.getText();
         try {
+            Statement stm = cn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT cant FROM inventario WHERE codigo='" + cod + "'");
+            if (rs.next()) {
+                cant = rs.getInt(1);
+                cant = cant + Integer.parseInt(this.txt_cant.getText());
+                PreparedStatement pst = cn.prepareStatement("UPDATE inventario SET cant='" + cant + "' WHERE codigo='" + this.txt_codigo.getText() + "'");
+                pst.executeUpdate();
+            }
+            
             PreparedStatement pst = cn.prepareStatement("INSERT INTO inventario(codigo,nombre_prod,marca_prod,precio_unit,cant) VALUES (?,?,?,?,?)");
             pst.setString(1, txt_codigo.getText());
             pst.setString(2, txt_NombreProd.getText());
@@ -285,7 +310,7 @@ public class Opciones extends javax.swing.JFrame {
 
             pst.executeUpdate();
             mostrardatos("");
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.print(e.getMessage());
         }
         mostrardatos("");
@@ -316,7 +341,7 @@ public class Opciones extends javax.swing.JFrame {
                     pst.executeUpdate();
                 }
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException | SQLException e) {
             System.out.print(e.getMessage());
         }
         mostrardatos("");
@@ -331,6 +356,10 @@ public class Opciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         filtro(this.txt_codigo.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txt_codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_codigoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,10 +389,8 @@ public class Opciones extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Opciones().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Opciones().setVisible(true);
         });
     }
 
